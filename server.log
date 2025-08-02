@@ -1,10 +1,130 @@
 
 > coach-system@1.0.0 dev
-> next dev
+> next dev -p 3002
 
   ▲ Next.js 14.2.3
-  - Local:        http://localhost:3000
+  - Local:        http://localhost:3002
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 10.8s
+ ✓ Ready in 11.8s
+ ○ Compiling / ...
+ ✓ Compiled / in 7.2s (456 modules)
+ GET / 200 in 7602ms
+ ✓ Compiled in 435ms (235 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 633ms (795 modules)
+ GET /login 200 in 956ms
+ GET /login? 200 in 74ms
+ ✓ Compiled /_not-found in 269ms (798 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 426ms
+ ✓ Compiled /dashboard in 441ms (994 modules)
+🔍 DASHBOARD DEBUG: Rozpoczynam sprawdzanie użytkownika...
+🔍 DASHBOARD DEBUG: Wynik getUser(): {
+  user: undefined,
+  error: AuthSessionMissingError: Auth session missing!
+      at eval (webpack-internal:///(rsc)/./node_modules/@supabase/auth-js/dist/module/GoTrueClient.js:1103:59)
+      at SupabaseAuthClient._useSession (webpack-internal:///(rsc)/./node_modules/@supabase/auth-js/dist/module/GoTrueClient.js:991:26)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async SupabaseAuthClient._getUser (webpack-internal:///(rsc)/./node_modules/@supabase/auth-js/dist/module/GoTrueClient.js:1095:20)
+      at async eval (webpack-internal:///(rsc)/./node_modules/@supabase/auth-js/dist/module/GoTrueClient.js:1082:20)
+      at async eval (webpack-internal:///(rsc)/./node_modules/@supabase/auth-js/dist/module/GoTrueClient.js:936:28) {
+    __isAuthError: true,
+    status: 400,
+    code: undefined
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Brak użytkownika - przekierowanie do /login
+ GET /dashboard 307 in 803ms
+🔍 DASHBOARD DEBUG: Rozpoczynam sprawdzanie użytkownika...
+🔍 DASHBOARD DEBUG: Rozpoczynam sprawdzanie użytkownika...
+🔍 DASHBOARD DEBUG: Wynik getUser(): { user: 'admin@example.com', error: null }
+🔍 DASHBOARD DEBUG: ✅ Użytkownik znaleziony: admin@example.com
+🔍 DASHBOARD DEBUG: Sprawdzam profil dla user.id: fc9c7a53-1971-4992-bf95-f1c6f899e30b
+🔍 DASHBOARD DEBUG: Wynik getUser(): { user: 'admin@example.com', error: null }
+🔍 DASHBOARD DEBUG: ✅ Użytkownik znaleziony: admin@example.com
+🔍 DASHBOARD DEBUG: Sprawdzam profil dla user.id: fc9c7a53-1971-4992-bf95-f1c6f899e30b
+🔍 DASHBOARD DEBUG: Wynik profiles query: {
+  profile: null,
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Brak profilu - tworzę nowy...
+🔍 DASHBOARD DEBUG: Wynik profiles query: {
+  profile: null,
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Brak profilu - tworzę nowy...
+🔍 DASHBOARD DEBUG: Wynik insert profilu: {
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Błąd przy tworzeniu profilu - przekierowanie do /login
+🔍 DASHBOARD DEBUG: Wynik insert profilu: {
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Błąd przy tworzeniu profilu - przekierowanie do /login
+🔍 DASHBOARD DEBUG: Rozpoczynam sprawdzanie użytkownika...
+🔍 DASHBOARD DEBUG: Rozpoczynam sprawdzanie użytkownika...
+🔍 DASHBOARD DEBUG: Wynik getUser(): { user: 'client@example.com', error: null }
+🔍 DASHBOARD DEBUG: ✅ Użytkownik znaleziony: client@example.com
+🔍 DASHBOARD DEBUG: Sprawdzam profil dla user.id: 0d8229ef-0647-43a8-b050-30d057659344
+🔍 DASHBOARD DEBUG: Wynik profiles query: {
+  profile: null,
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Brak profilu - tworzę nowy...
+🔍 DASHBOARD DEBUG: Wynik getUser(): { user: 'client@example.com', error: null }
+🔍 DASHBOARD DEBUG: ✅ Użytkownik znaleziony: client@example.com
+🔍 DASHBOARD DEBUG: Sprawdzam profil dla user.id: 0d8229ef-0647-43a8-b050-30d057659344
+🔍 DASHBOARD DEBUG: Wynik insert profilu: {
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Błąd przy tworzeniu profilu - przekierowanie do /login
+🔍 DASHBOARD DEBUG: Wynik profiles query: {
+  profile: null,
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Brak profilu - tworzę nowy...
+🔍 DASHBOARD DEBUG: Wynik insert profilu: {
+  error: {
+    code: '42P17',
+    details: null,
+    hint: null,
+    message: 'infinite recursion detected in policy for relation "profiles"'
+  }
+}
+🔍 DASHBOARD DEBUG: ❌ Błąd przy tworzeniu profilu - przekierowanie do /login
