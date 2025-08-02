@@ -1,0 +1,40 @@
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export async function middleware(req: NextRequest) {
+  console.log('🔐 MIDDLEWARE DEBUG: Sprawdzam ścieżkę:', req.nextUrl.pathname)
+  
+  const res = NextResponse.next()
+  const supabase = createMiddlewareClient({ req, res })
+
+  const {
+    data: { user }, error
+  } = await supabase.auth.getUser()
+
+  console.log('🔐 MIDDLEWARE DEBUG: User status:', { 
+    hasUser: !!user, 
+    email: user?.email,
+    error: error?.message 
+  })
+
+  // Jeśli użytkownik nie jest zalogowany i próbuje wejść na chronioną stronę
+  if (!user && (req.nextUrl.pathname.startsWith('/dashboard') || 
+                req.nextUrl.pathname.startsWith('/api'))) {
+    console.log('🔐 MIDDLEWARE DEBUG: ❌ Brak użytkownika - przekierowanie do /login')
+    return NextResponse.redirect(new URL('/login', req.url))
+  }
+
+  // Jeśli użytkownik jest zalogowany i próbuje wejść na stronę logowania
+  if (user && req.nextUrl.pathname === '/login') {
+    console.log('🔐 MIDDLEWARE DEBUG: ✅ Użytkownik zalogowany - przekierowanie do /dashboard')
+    return NextResponse.redirect(new URL('/dashboard', req.url))
+  }
+
+  console.log('🔐 MIDDLEWARE DEBUG: ✅ Przepuszczam request')
+  return res
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+}
