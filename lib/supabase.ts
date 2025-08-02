@@ -1,9 +1,15 @@
 // KONFIGURACJA SUPABASE DLA NEXT.JS 13+ APP ROUTER
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 // Client Component Client (dla 'use client' komponentów)
 export function createClient() {
   return createClientComponentClient()
+}
+
+// Server Component Client (dla server components)
+export function createServerClient() {
+  const { cookies } = require('next/headers')
+  return createServerComponentClient({ cookies })
 }
 
 // Backward compatibility - domyślny export  

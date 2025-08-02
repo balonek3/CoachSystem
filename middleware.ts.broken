@@ -1,0 +1,22 @@
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export async function middleware(req: NextRequest) {
+  // TEMPORARY: Simplified middleware to fix Vercel Edge Runtime issues
+  // TODO: Implement proper auth checking without Supabase client in middleware
+  
+  // Skip middleware for static files and API routes
+  if (req.nextUrl.pathname.startsWith('/_next') || 
+      req.nextUrl.pathname.startsWith('/api') ||
+      req.nextUrl.pathname.includes('.')) {
+    return NextResponse.next()
+  }
+
+  // For now, just pass through all requests
+  // Auth will be handled in page components using client-side checks
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+}
